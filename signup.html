@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - AI Recruitia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="auth-main">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <div class="auth-logo">
+                        <img src="https://airecruita.com/wp-content/uploads/2025/07/AI_recuruita_logo.png" alt="AI Recruitia" class="logo">
+                    </div>
+                    <h1>Create Account</h1>
+                    <p>Join AI Recruitia and find your dream job</p>
+                </div>
+                
+                <form class="auth-form" id="signupForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="firstName" name="firstName" required placeholder="Enter your first name">
+                                <span class="form-icon">👤</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="lastName" name="lastName" required placeholder="Enter your last name">
+                                <span class="form-icon">👤</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-wrapper">
+                            <input type="email" id="email" name="email" required placeholder="Enter your email">
+                            <span class="form-icon">📧</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <div class="input-wrapper">
+                            <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                            <span class="form-icon">📱</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="password" name="password" required placeholder="Create a strong password">
+                            <span class="form-icon password-icon">🔒</span>
+                            <button type="button" class="password-toggle" onclick="togglePassword('password')">👁️</button>
+                        </div>
+                        <div class="password-strength" id="passwordStrength"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
+                            <span class="form-icon password-icon">🔒</span>
+                            <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">👁️</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userType">I am a</label>
+                        <div class="input-wrapper">
+                            <select id="userType" name="userType" required>
+                                <option value="">Select your role</option>
+                                <option value="jobseeker">Job Seeker</option>
+                                <option value="employer">Employer</option>
+                                <option value="recruiter">Recruiter</option>
+                            </select>
+                            <span class="form-icon">💼</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="terms" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
+                        </label>
+                        
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="newsletter">
+                            <span class="checkmark"></span>
+                            Subscribe to our newsletter for job updates
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn">Create Account</button>
+                </form>
+                
+                <div class="auth-divider">
+                    <span>Or sign up with</span>
+                </div>
+                
+                <div class="social-login">
+                    
+                </div>
+                
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="login.html" class="auth-link">Sign in here</a></p>
+                </div>
+            </div>
+            
+            <div class="auth-info">
+                <h2>Why Choose AI Recruitia?</h2>
+                <div class="info-stats">
+                    <div class="stat">
+                        <h3>50K+</h3>
+                        <p>Job Opportunities</p>
+                    </div>
+                    <div class="stat">
+                        <h3>1000+</h3>
+                        <p>Companies Hiring</p>
+                    </div>
+                    <div class="stat">
+                        <h3>24/7</h3>
+                        <p>Support Available</p>
+                    </div>
+                </div>
+                <div class="info-features">
+                    <div class="feature">
+                        <span class="feature-icon">🎯</span>
+                        <p>Smart Job Matching Algorithm</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">📊</span>
+                        <p>Career Progress Tracking</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🔔</span>
+                        <p>Real-time Job Alerts</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🤝</span>
+                        <p>Direct Employer Communication</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // Signup form handling
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                firstName: document.getElementById('firstName').value.trim(),
+                lastName: document.getElementById('lastName').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                password: document.getElementById('password').value,
+                confirmPassword: document.getElementById('confirmPassword').value,
+                userType: document.getElementById('userType').value,
+                terms: document.querySelector('input[name="terms"]').checked,
+                newsletter: document.querySelector('input[name="newsletter"]').checked
+            };
+            
+            // Reset any previous error states
+            clearErrors();
+            
+            // Validation
+            let isValid = true;
+            
+            // Name validation
+            if (!formData.firstName) {
+                showError('firstName', 'First name is required');
+                isValid = false;
+            } else if (formData.firstName.length < 2) {
+                showError('firstName', 'First name must be at least 2 characters');
+                isValid = false;
+            }
+            
+            if (!formData.lastName) {
+                showError('lastName', 'Last name is required');
+                isValid = false;
+            } else if (formData.lastName.length < 2) {
+                showError('lastName', 'Last name must be at least 2 characters');
+                isValid = false;
+            }
+            
+            // Email validation
+            if (!formData.email) {
+                showError('email', 'Email is required');
+                isValid = false;
+            } else if (!isValidEmail(formData.email)) {
+                showError('email', 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Phone validation
+            if (!formData.phone) {
+                showError('phone', 'Phone number is required');
+                isValid = false;
+            } else if (!isValidPhone(formData.phone)) {
+                showError('phone', 'Please enter a valid phone number');
+                isValid = false;
+            }
+            
+            // Password validation
+            if (!formData.password) {
+                showError('password', 'Password is required');
+                isValid = false;
+            } else if (formData.password.length < 8) {
+                showError('password', 'Password must be at least 8 characters');
+                isValid = false;
+            } else if (!isStrongPassword(formData.password)) {
+                showError('password', 'Password must contain uppercase, lowercase, number, and special character');
+                isValid = false;
+            }
+            
+            // Confirm password validation
+            if (!formData.confirmPassword) {
+                showError('confirmPassword', 'Please confirm your password');
+                isValid = false;
+            } else if (formData.password !== formData.confirmPassword) {
+                showError('confirmPassword', 'Passwords do not match');
+                isValid = false;
+            }
+            
+            // User type validation
+            if (!formData.userType) {
+                showError('userType', 'Please select your role');
+                isValid = false;
+            }
+            
+            // Terms validation
+            if (!formData.terms) {
+                showError('terms', 'You must agree to the terms and conditions');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Show loading state
+                const submitBtn = document.querySelector('.auth-btn');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Creating Account...';
+                submitBtn.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    alert('Account created successfully! Welcome to AI Recruitia.');
+                    window.location.href = 'login.html';
+                }, 2000);
+            }
+        });
+        
+        // Password toggle functionality
+        function togglePassword(fieldId) {
+            const passwordField = document.getElementById(fieldId);
+            const toggleBtn = passwordField.nextElementSibling.nextElementSibling;
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleBtn.textContent = '🙈';
+                toggleBtn.setAttribute('aria-label', 'Hide password');
+            } else {
+                passwordField.type = 'password';
+                toggleBtn.textContent = '👁️';
+                toggleBtn.setAttribute('aria-label', 'Show password');
+            }
+        }
+        
+        // Password strength checker
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const strengthDiv = document.getElementById('passwordStrength');
+            const strength = getPasswordStrength(password);
+            
+            strengthDiv.className = 'password-strength ' + strength.class;
+            strengthDiv.textContent = strength.text;
+        });
+        
+        function getPasswordStrength(password) {
+            if (password.length === 0) return { class: '', text: '' };
+            
+            let score = 0;
+            const checks = [
+                password.length >= 8,
+                /[a-z]/.test(password),
+                /[A-Z]/.test(password),
+                /[0-9]/.test(password),
+                /[^A-Za-z0-9]/.test(password)
+            ];
+            
+            score = checks.filter(check => check).length;
+            
+            if (score < 3) return { class: 'weak', text: 'Weak password' };
+            if (score < 4) return { class: 'medium', text: 'Medium strength' };
+            return { class: 'strong', text: 'Strong password' };
+        }
+        
+        // Social signup handlers
+        document.querySelector('.google-btn').addEventListener('click', () => {
+            alert('Google signup integration coming soon!');
+        });
+        
+        document.querySelector('.linkedin-btn').addEventListener('click', () => {
+            alert('LinkedIn signup integration coming soon!');
+        });
+        
+        // Utility functions
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        function isValidPhone(phone) {
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
+        }
+        
+        function isStrongPassword(password) {
+            return password.length >= 8 &&
+                   /[a-z]/.test(password) &&
+                   /[A-Z]/.test(password) &&
+                   /[0-9]/.test(password) &&
+                   /[^A-Za-z0-9]/.test(password);
+        }
+        
+        function showError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const wrapper = field.closest('.form-group');
+            
+            // Add error class
+            wrapper.classList.add('error');
+            
+            // Create or update error message
+            let errorMsg = wrapper.querySelector('.error-message');
+            if (!errorMsg) {
+                errorMsg = document.createElement('span');
+                errorMsg.className = 'error-message';
+                wrapper.appendChild(errorMsg);
+            }
+            errorMsg.textContent = message;
+        }
+        
+        function clearErrors() {
+            const errorFields = document.querySelectorAll('.form-group.error');
+            errorFields.forEach(field => {
+                field.classList.remove('error');
+                const errorMsg = field.querySelector('.error-message');
+                if (errorMsg) {
+                    errorMsg.remove();
+                }
+            });
+        }
+        
+        // Clear error on input focus
+        document.querySelectorAll('input, select').forEach(input => {
+            input.addEventListener('focus', function() {
+                const wrapper = this.closest('.form-group');
+                if (wrapper.classList.contains('error')) {
+                    wrapper.classList.remove('error');
+                    const errorMsg = wrapper.querySelector('.error-message');
+                    if (errorMsg) {
+                        errorMsg.remove();
+                    }
+                }
+            });
+        });
+    </script>
+    
+    <style>
+        /* SIGNUP PAGE SPECIFIC STYLES - MOBILE FIRST APPROACH */
+        
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Hide any existing header/nav elements */
+        header, nav, .header, .nav {
+            display: none !important;
+        }
+        
+        /* Auth Main Container */
+        .auth-main {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 10px;
+            position: relative;
+        }
+        
+        .auth-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.2;
+        }
+        
+        /* Auth Container - Mobile First */
+        .auth-container {
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            max-height: 95vh;
+            overflow-y: auto;
+        }
+        
+        /* Auth Card */
+        .auth-card {
+            padding: 25px 20px;
+        }
+        
+        .auth-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .auth-logo {
+            margin-bottom: 15px;
+        }
+        
+        .auth-logo .logo {
+            height: 45px;
+            width: auto;
+            max-width: 160px;
+        }
+        
+        .auth-header h1 {
+            font-size: 1.7rem;
+            color: #333;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        
+        .auth-header p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Form Styles */
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .form-group {
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+            font-size: 0.85rem;
+        }
+        
+        .input-wrapper {
+            position: relative;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            padding-right: 40px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #007bff;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+        
+        .form-group input::placeholder {
+            color: #aaa;
+        }
+        
+        .form-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1rem;
+            color: #666;
+            pointer-events: none;
+        }
+        
+        .password-icon {
+            right: 40px !important;
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #666;
+            padding: 4px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .password-toggle:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Password Strength Indicator */
+        .password-strength {
+            font-size: 0.75rem;
+            margin-top: 4px;
+            padding: 2px 0;
+            font-weight: 500;
+        }
+        
+        .password-strength.weak {
+            color: #dc3545;
+        }
+        
+        .password-strength.medium {
+            color: #ffc107;
+        }
+        
+        .password-strength.strong {
+            color: #28a745;
+        }
+        
+        /* Form Options */
+        .form-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 6px 0;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            cursor: pointer;
+            font-size: 0.8rem;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        .checkbox-label input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+            margin-top: 2px;
+            transform: scale(1.1);
+            padding: 0;
+        }
+        
+        .terms-link {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .terms-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Auth Button */
+        .auth-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 6px;
+        }
+        
+        .auth-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+        }
+        
+        .auth-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .auth-btn:active {
+            transform: translateY(0);
+        }
+        
+        /* Divider */
+        .auth-divider {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .auth-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e1e5e9;
+        }
+        
+        .auth-divider span {
+            background: white;
+            padding: 0 12px;
+            color: #666;
+            font-size: 0.85rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Social Login */
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .social-btn {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .social-btn:hover {
+            border-color: #007bff;
+            background: rgba(0, 123, 255, 0.05);
+        }
+        
+        .social-icon {
+            font-size: 1rem;
+        }
+        
+        /* Auth Footer */
+        .auth-footer {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #e1e5e9;
+        }
+        
+        .auth-footer p {
+            color: #666;
+            font-size: 0.85rem;
+        }
+        
+        .auth-link {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .auth-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        
+        /* Auth Info - Hidden on mobile by default */
+        .auth-info {
+            display: none;
+        }
+        
+        /* Error States */
+        .form-group.error input,
+        .form-group.error select {
+            border-color: #dc3545;
+            background: #fff5f5;
+        }
+        
+        .error-message {
+            color: #dc3545;
+            font-size: 0.75rem;
+            margin-top: 3px;
+            display: block;
+        }
+        
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .auth-main {
+                padding: 20px;
+            }
+            
+            .auth-container {
+                max-width: 500px;
+            }
+            
+            .auth-card {
+                padding: 35px 30px;
+            }
+            
+            .auth-header h1 {
+                font-size: 2rem;
+            }
+            
+            .auth-header p {
+                font-size: 1rem;
+            }
+            
+            .auth-form {
+                gap: 20px;
+            }
+            
+            .form-group input,
+            .form-group select {
+                padding: 14px 16px;
+                padding-right: 45px;
+                font-size: 15px;
+            }
+            
+            .social-login {
+                flex-direction: row;
+                gap: 12px;
+            }
+            
+            .auth-btn {
+                padding: 15px;
+                font-size: 1rem;
+            }
+            
+            .form-options {
+                gap: 12px;
+            }
+            
+            .checkbox-label {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            .auth-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                max-width: 1100px;
+                border-radius: 20px;
+                max-height: none;
+            }
+            
+            .auth-card {
+                padding: 45px 40px;
+            }
+            
+            .auth-header h1 {
+                font-size: 2.3rem;
+            }
+            
+            .auth-header p {
+                font-size: 1.1rem;
+            }
+            
+            .auth-logo .logo {
+                height: 55px;
+            }
+            
+            .form-group input,
+            .form-group select {
+                padding: 15px 18px;
+                padding-right: 50px;
+                font-size: 16px;
+            }
+            
+            /* Show auth info on desktop */
+            .auth-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 45px 40px;
+                position: relative;
+            }
+            
+            .auth-info::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+                opacity: 0.3;
+            }
+            
+            .auth-info > * {
+                position: relative;
+                z-index: 1;
+            }
+            
+            .auth-info h2 {
+                font-size: 1.9rem;
+                margin-bottom: 30px;
+                text-align: center;
+                font-weight: 600;
+            }
+            
+            .info-stats {
+                display: flex;
+                justify-content: space-around;
+                margin-bottom: 35px;
+                text-align: center;
+            }
+            
+            .stat h3 {
+                font-size: 2rem;
+                margin-bottom: 5px;
+                font-weight: 700;
+            }
+            
+            .stat p {
+                font-size: 0.85rem;
+                opacity: 0.9;
+            }
+            
+            .info-features {
+                display: flex;
+                flex-direction: column;
+                gap: 18px;
+            }
+            
+            .feature {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+            
+            .feature-icon {
+                font-size: 1.3rem;
+                width: 36px;
+                height: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                flex-shrink: 0;
+            }
+            
+            .feature p {
+                font-size: 0.95rem;
+                font-weight: 500;
+                opacity: 0.95;
+            }
+        }
+        
+        /* Large Desktop */
+        @media (min-width: 1200px) {
+            .auth-container {
+                max-width: 1200px;
+            }
+            
+            .auth-card {
+                padding: 50px 45px;
+            }
+            
+            .auth-info {
+                padding: 50px 45px;
+            }
+            
+            .auth-info h2 {
+                font-size: 2.1rem;
+                margin-bottom: 35px;
+            }
+            
+            .info-stats {
+                margin-bottom: 40px;
+            }
+            
+            .stat h3 {
+                font-size: 2.2rem;
+            }
+            
+            .stat p {
+                font-size: 0.9rem;
+            }
+            
+            .info-features {
+                gap: 20px;
+            }
+            
+            .feature-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.4rem;
+            }
+            
+            .feature p {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Landscape phone orientation */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .auth-main {
+                padding: 5px;
+            }
+            
+            .auth-card {
+                padding: 15px 20px;
+            }
+            
+            .auth-header {
+                margin-bottom: 15px;
+            }
+            
+            .auth-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .auth-form {
+                gap: 12px;
+            }
+            
+            .auth-divider {
+                margin: 15px 0;
+            }
+            
+            .auth-footer {
+                margin-top: 15px;
+            }
+        }
+        
+        /* High DPI displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .auth-container {
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            }
+        }
+        
+        /* Reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Focus styles for accessibility */
+        input:focus,
+        select:focus,
+        button:focus,
+        a:focus {
+            outline: 2px solid #007bff;
+            outline-offset: 2px;
+        }
+        
+        /* Print styles */
+        @media print {
+            .auth-main {
+                background: white;
+                padding: 0;
+            }
+            
+            .auth-container {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+            
+            .auth-info {
+                display: none;
+            }
+        }
+    </style>
+</body>
+</html>
